@@ -1,6 +1,4 @@
 package com.auth.mod.commands;
-import java.awt.TextComponent;
-
 import com.auth.mod.Main;
 
 import net.minecraft.command.CommandBase;
@@ -9,10 +7,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentBase;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 
 
 public class See extends CommandBase {

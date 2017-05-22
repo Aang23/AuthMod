@@ -3,12 +3,8 @@ package com.auth.mod.events;
 import com.auth.mod.Main;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class PlayerMovement {
 	@SubscribeEvent

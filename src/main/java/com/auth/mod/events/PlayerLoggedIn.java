@@ -3,7 +3,6 @@ package com.auth.mod.events;
 import com.auth.mod.Main;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;

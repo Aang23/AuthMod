@@ -17,31 +17,42 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 
 
-public class RegisterCommand extends CommandBase {
+public class Unregister extends CommandBase {
 	
 	@Override
 	public String getCommandName()
 	{
-	return "register";
+	return "unregister";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-	return "/register <password>";	}
+	return "/unregister <password>";
+	}
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
-		// Turn the sender into a player entity
-		if(!Main.passwords.containsKey(player.getName())){
-		Main.passwords.put(player.getName(), args[0]);
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Registered !"));
-		Main.logged.add(player.getName());
-		} else {
-			Main.passwords.put(player.getName(), args[0]);
-			player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Allready registered."));
+		if(Main.passwords.get(player.getName()).equals(args[0]) && Main.logged.contains(player.getName())){
+				Main.logged.remove(player.getName());
+				Main.passwords.remove(player.getName());
+				Main.posX.put(player.getName(), player.posX);
+				Main.posY.put(player.getName(), player.posY);
+				Main.posZ.put(player.getName(), player.posZ);
+			player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Succefuly deleted."));
+	if( Main.logged.contains(args[0])){
+		Main.logged.remove(args[0]);
+	}
+} else player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Not logged in / Wrong password."));
+	
+		Map<String, String> ldapContent = Main.passwords;
+		Properties properties = new Properties();
+
+		for (Map.Entry<String,String> entry : ldapContent.entrySet()) {
+		    properties.put(entry.getKey(), entry.getValue());
 		}
+
 		
 		try{
 
@@ -58,13 +69,7 @@ public class RegisterCommand extends CommandBase {
     		e.printStackTrace();
          }
 		
-		Map<String, String> ldapContent = Main.passwords;
-		Properties properties = new Properties();
-
-		for (Map.Entry<String,String> entry : ldapContent.entrySet()) {
-		    properties.put(entry.getKey(), entry.getValue());
-		}
-
+		
 		try {
 			properties.store(new FileOutputStream("passwords.properties"), null);
 		} catch (FileNotFoundException e) {
@@ -74,7 +79,7 @@ public class RegisterCommand extends CommandBase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	
 	}
 }
 
