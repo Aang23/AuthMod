@@ -19,8 +19,4 @@ public class CommandEvents {
 		}
 		}
 	}
-	public static ITextComponent makesimpletext(String text)
-	  {
-	    return new TextComponentString(text);
-	  }
 }

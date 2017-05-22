@@ -1,6 +1,6 @@
 package com.auth.mod.commands;
 import com.auth.mod.Main;
-import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -32,10 +32,10 @@ public class Commandlogout extends CommandBase {
 		Main.posX.put(player.getName(), player.posX);
 		Main.posY.put(player.getName(), player.posY);
 		Main.posZ.put(player.getName(), player.posZ);
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Disconnected"));
+		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Disconnected"));
 	}
 	else {
-		player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Already disconnected"));
+		player.addChatMessage(new TextComponentString(TextFormatting.RED + "Already disconnected"));
 	}
 } 
 }

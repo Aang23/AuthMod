@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.auth.mod.Main;
-import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -40,11 +40,11 @@ public class Unregister extends CommandBase {
 				Main.posX.put(player.getName(), player.posX);
 				Main.posY.put(player.getName(), player.posY);
 				Main.posZ.put(player.getName(), player.posZ);
-			player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Succefuly deleted."));
+			player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Succefuly deleted."));
 	if( Main.logged.contains(args[0])){
 		Main.logged.remove(args[0]);
 	}
-} else player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Not logged in / Wrong password."));
+} else player.addChatMessage(new TextComponentString(TextFormatting.RED + "Not logged in / Wrong password."));
 	
 		Map<String, String> ldapContent = Main.passwords;
 		Properties properties = new Properties();

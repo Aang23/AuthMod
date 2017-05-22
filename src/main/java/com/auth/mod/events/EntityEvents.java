@@ -14,10 +14,6 @@ public class EntityEvents {
 			evt.setCanceled(true);
 			}
 				}
-	public static ITextComponent makesimpletext(String text)
-	  {
-	    return new TextComponentString(text);
-	  }
 }
 
 /*

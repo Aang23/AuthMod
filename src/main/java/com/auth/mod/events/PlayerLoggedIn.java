@@ -1,7 +1,7 @@
 package com.auth.mod.events;
 
 import com.auth.mod.Main;
-import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -15,9 +15,9 @@ public class PlayerLoggedIn {
 		Main.posY.put(evt.player.getName(), evt.player.posY);
 		Main.posZ.put(evt.player.getName(), evt.player.posZ);
 		if(Main.passwords.containsKey(evt.player.getName())){
-		evt.player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Please use /login <password>"));
+		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + "Please use /login <password>"));
 		} else {
-		evt.player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Please use /register <password>"));
+		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + "Please use /register <password>"));
 		}
 	}
 }

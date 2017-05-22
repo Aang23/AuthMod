@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.auth.mod.Main;
-import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -36,11 +36,11 @@ public class rmlogin extends CommandBase {
 		EntityPlayer player = (EntityPlayer) sender;
 		if(Main.passwords.containsKey(args[0])){
 			Main.passwords.remove(args[0]);
-			player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Succeflly deleted."));
+			player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Succeflly deleted."));
 	if( Main.logged.contains(args[0])){
 		Main.logged.remove(args[0]);
 	}
-} else player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Account does not exist."));
+} else player.addChatMessage(new TextComponentString(TextFormatting.RED + "Account does not exist."));
 	
 		try{
 
