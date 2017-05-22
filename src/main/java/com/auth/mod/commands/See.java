@@ -21,14 +21,12 @@ public class See extends CommandBase {
 	public String getCommandName()
 	{
 	return "see";
-	// Name of the command "test" will be called by "/test"
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 	return "/see <username>";
-	// Message to show when the user uses "/help test"
 	}
 
 	@Override

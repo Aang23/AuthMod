@@ -2,6 +2,7 @@ package com.auth.mod.commands;
 import java.awt.TextComponent;
 
 import com.auth.mod.Main;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -36,17 +37,15 @@ public class Commandlogout extends CommandBase {
 		EntityPlayer player = (EntityPlayer) sender;
 	if( Main.logged.contains(player.getName())){
 		Main.logged.remove(player.getName());
-		player.addChatMessage(makesimpletext("Disconnected"));
+		Main.posX.put(player.getName(), player.posX);
+		Main.posY.put(player.getName(), player.posY);
+		Main.posZ.put(player.getName(), player.posZ);
+		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Disconnected"));
 	}
 	else {
-		player.addChatMessage(makesimpletext("Already disconnected"));
+		player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Already disconnected"));
 	}
 } 
-	
-	public static ITextComponent makesimpletext(String text)
-	  {
-	    return new TextComponentString(text);
-	  }
 }
 
 

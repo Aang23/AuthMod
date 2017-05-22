@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import com.auth.mod.Main;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -26,15 +27,12 @@ public class RegisterCommand extends CommandBase {
 	public String getCommandName()
 	{
 	return "register";
-	// Name of the command "test" will be called by "/test"
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-	return "/register <password>";
-	// Message to show when the user uses "/help test"
-	}
+	return "/register <password>";	}
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
@@ -42,11 +40,11 @@ public class RegisterCommand extends CommandBase {
 		// Turn the sender into a player entity
 		if(!Main.passwords.containsKey(player.getName())){
 		Main.passwords.put(player.getName(), args[0]);
-		player.addChatMessage(makesimpletext("Succefully registered !"));
+		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Registered !"));
 		Main.logged.add(player.getName());
 		} else {
 			Main.passwords.put(player.getName(), args[0]);
-			player.addChatMessage(makesimpletext("Allready registered."));
+			player.addChatMessage(new TextComponentString(ChatFormatting.RED + "Allready registered."));
 		}
 		
 		Map<String, String> ldapContent = Main.passwords;
@@ -67,11 +65,6 @@ public class RegisterCommand extends CommandBase {
 		}
 		
 	}
-	
-	public static ITextComponent makesimpletext(String text)
-	  {
-	    return new TextComponentString(text);
-	  }
 }
 
 
