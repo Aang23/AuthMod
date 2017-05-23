@@ -24,6 +24,7 @@ public class LoginCommand extends CommandBase implements ICommand {
 	{
 	return "/login <password>";
 	}
+
 	
 	@Override
 	public boolean checkPermission(MinecraftServer server, ICommandSender sender)
@@ -31,6 +32,11 @@ public class LoginCommand extends CommandBase implements ICommand {
 		return true;
 	}
 
+	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
+	  {
+	    return true;
+	  }
+  
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
@@ -47,4 +53,5 @@ if(Main.passwords.containsKey(player.getName())){
 }
 	}
 }
+
 

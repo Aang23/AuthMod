@@ -11,61 +11,42 @@ import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 
 
-public class Unregister extends CommandBase implements ICommand {
+public class changelogin extends CommandBase {
 	
 	@Override
 	public String getCommandName()
 	{
-	return "unregister";
+	return "changelogin";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-	return "/unregister <password>";
+	return "/changelogin <password> <newpassword>";
 	}
-
 	
-	@Override
-	public boolean checkPermission(MinecraftServer server, ICommandSender sender)
-	{
-		return true;
-	}
-
 	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
 	  {
 	    return true;
 	  }
-
+	 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
-		if(Main.passwords.get(player.getName()).equals(args[0]) && Main.logged.contains(player.getName())){
-				Main.logged.remove(player.getName());
-				Main.passwords.remove(player.getName());
-				Main.posX.put(player.getName(), player.posX);
-				Main.posY.put(player.getName(), player.posY);
-				Main.posZ.put(player.getName(), player.posZ);
-			player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Succefuly deleted."));
-	if( Main.logged.contains(args[0])){
-		Main.logged.remove(args[0]);
-	}
-} else player.addChatMessage(new TextComponentString(TextFormatting.RED + "Not logged in / Wrong password."));
-		
-		Map<String, String> ldapContent = Main.passwords;
-		Properties properties = new Properties();
-
-		for (Map.Entry<String,String> entry : ldapContent.entrySet()) {
-		    properties.put(entry.getKey(), entry.getValue());
+		// Turn the sender into a player entity
+		if(Main.passwords.get(player.getName()).equals(args[0])){
+		Main.passwords.remove(player.getName());
+		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Password changed !"));
+		Main.passwords.put(player.getName(), args[1]);
+		} else {
+			player.addChatMessage(new TextComponentString(TextFormatting.RED + "Wrong password."));
 		}
-
 		
 		try{
 
@@ -82,7 +63,13 @@ public class Unregister extends CommandBase implements ICommand {
     		e.printStackTrace();
          }
 		
-		
+		Map<String, String> ldapContent = Main.passwords;
+		Properties properties = new Properties();
+
+		for (Map.Entry<String,String> entry : ldapContent.entrySet()) {
+		    properties.put(entry.getKey(), entry.getValue());
+		}
+
 		try {
 			properties.store(new FileOutputStream("passwords.properties"), null);
 		} catch (FileNotFoundException e) {
@@ -92,7 +79,7 @@ public class Unregister extends CommandBase implements ICommand {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		
 	}
 }
 

@@ -30,12 +30,18 @@ public class RegisterCommand extends CommandBase implements ICommand {
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 	return "/register <password>";	}
+
 	
 	@Override
 	public boolean checkPermission(MinecraftServer server, ICommandSender sender)
 	{
 		return true;
 	}
+
+	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
+	  {
+	    return true;
+	  }
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
@@ -46,7 +52,6 @@ public class RegisterCommand extends CommandBase implements ICommand {
 		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Registered !"));
 		Main.logged.add(player.getName());
 		} else {
-			Main.passwords.put(player.getName(), args[0]);
 			player.addChatMessage(new TextComponentString(TextFormatting.RED + "Allready registered."));
 		}
 		

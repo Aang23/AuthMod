@@ -1,7 +1,9 @@
 package com.auth.mod;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import com.auth.mod.commands.LoginCommand;
 import com.auth.mod.commands.RegisterCommand;
 import com.auth.mod.commands.See;
 import com.auth.mod.commands.Unregister;
+import com.auth.mod.commands.changelogin;
 import com.auth.mod.commands.rmlogin;
 import com.auth.mod.events.CommandEvents;
 import com.auth.mod.events.EntityEvents;
@@ -43,17 +46,65 @@ public class Main {
 	public static Map posX = new HashMap();
 	public static Map posY = new HashMap();
 	public static Map posZ = new HashMap();
+	public static Map config = new HashMap();
 	@Mod.Instance(modId)
 	public static Main instance;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		System.out.println(name + " is loading!");
-
+        config.put("logout", "1");
+        config.put("rmlogin", "1");
+        config.put("see", "1");
+        config.put("unregister", "1");
+        config.put("changelogin", "1");
 		}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
+		
+		File f = new File("config/AuthMod.cfg");
+		if(f.exists() && !f.isDirectory()) { 
+
+		
+		Map<String, String> ldapContent = new HashMap<String, String>();
+		Properties properties = new Properties();
+		try {
+			properties.load(new FileInputStream("config/AuthMod.cfg"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		for (String key : properties.stringPropertyNames()) {
+		   ldapContent.put(key, properties.get(key).toString());
+		}
+		config = ldapContent;
+		
+		}
+		else {
+			
+			Map<String, String> ldapContent = config;
+			Properties properties = new Properties();
+
+			for (Map.Entry<String,String> entry : ldapContent.entrySet()) {
+			    properties.put(entry.getKey(), entry.getValue());
+			}
+
+			try {
+				properties.store(new FileOutputStream("config/AuthMod.cfg"), null);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
 	}
 
@@ -82,12 +133,19 @@ public class Main {
 		}
 		passwords = ldapContent;
 		
+		int logout = Integer.parseInt((String) config.get("logout"));
+		int unregister = Integer.parseInt((String) config.get("unregister"));
+		int rmlogin = Integer.parseInt((String) config.get("rmlogin"));
+		int see = Integer.parseInt((String) config.get("see"));
+		int changelogin = Integer.parseInt((String) config.get("changelogin"));
+		
 	event.registerServerCommand(new LoginCommand());
-	event.registerServerCommand(new See());
+	if(see==1) event.registerServerCommand(new See());
+	if(changelogin==1) event.registerServerCommand(new changelogin());
 	event.registerServerCommand(new RegisterCommand());
-	event.registerServerCommand(new Commandlogout());
-	event.registerServerCommand(new rmlogin());
-	event.registerServerCommand(new Unregister());
+	if(logout==1) event.registerServerCommand(new Commandlogout());
+	if(rmlogin==1) event.registerServerCommand(new rmlogin());
+	if(unregister==1) event.registerServerCommand(new Unregister());
 	MinecraftForge.EVENT_BUS.register(new PlayerLoggedIn());
 	MinecraftForge.EVENT_BUS.register(new PlayerLoggedOut());
 	MinecraftForge.EVENT_BUS.register(new PlayerMove());
