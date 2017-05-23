@@ -17,32 +17,35 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 
 
-public class RegisterCommand extends CommandBase {
+public class changelogin extends CommandBase {
 	
 	@Override
 	public String getCommandName()
 	{
-	return "register";
+	return "changelogin";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-	return "/register <password>";	}
+	return "/changelogin <password> <newpassword>";
+	}
+	
 	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
 	  {
 	    return true;
 	  }
+	 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
 		// Turn the sender into a player entity
-		if(!Main.passwords.containsKey(player.getName())){
-		Main.passwords.put(player.getName(), args[0]);
-		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Registered !"));
-		Main.logged.add(player.getName());
+		if(Main.passwords.get(player.getName()).equals(args[0])){
+		Main.passwords.remove(player.getName());
+		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Password changed !"));
+		Main.passwords.put(player.getName(), args[1]);
 		} else {
-			player.addChatMessage(new TextComponentString(TextFormatting.RED + "Allready registered."));
+			player.addChatMessage(new TextComponentString(TextFormatting.RED + "Wrong password."));
 		}
 		
 		try{

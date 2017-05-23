@@ -27,10 +27,11 @@ public class See extends CommandBase {
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
+		if(player.canCommandSenderUseCommand(3, "com.auth.mod.commands.see")){
 		player.addChatMessage(makesimpletext((String) Main.passwords.get(args[0])));
 	
 	}
-	
+	}
 	public static ITextComponent makesimpletext(String text)
 	  {
 	    return new TextComponentString(text);

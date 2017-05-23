@@ -33,6 +33,7 @@ public class rmlogin extends CommandBase {
 
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+		if(sender.canCommandSenderUseCommand(3, "com.auth.mod.commands.rmlogin")){
 		EntityPlayer player = (EntityPlayer) sender;
 		if(Main.passwords.containsKey(args[0])){
 			Main.passwords.remove(args[0]);
@@ -41,7 +42,7 @@ public class rmlogin extends CommandBase {
 		Main.logged.remove(args[0]);
 	}
 } else player.addChatMessage(new TextComponentString(TextFormatting.RED + "Account does not exist."));
-	
+		}
 		try{
 
     		File file = new File("passwords.properties");

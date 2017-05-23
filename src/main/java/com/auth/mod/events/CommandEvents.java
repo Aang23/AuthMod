@@ -13,7 +13,8 @@ public class CommandEvents {
 	  public void CommandEvents(CommandEvent evt) {
 		if(evt.getSender() instanceof EntityPlayer){
 		if(!Main.logged.contains(evt.getSender().getName())){
-			if(!evt.getCommand().getCommandName().contains("login") && !evt.getCommand().getCommandName().contains("register") && !evt.getCommand().getCommandName().contains("unregister") && !evt.getCommand().getCommandName().contains("logout")){
+			//System.out.println(evt.getCommand().getCommandName().toString());
+			if(!evt.getCommand().getCommandName().toString().contains("login") && !evt.getCommand().getCommandName().toString().contains("register")){
 			evt.setCanceled(true);
 			} 
 		}
