@@ -4,13 +4,14 @@ import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 
 
-public class LoginCommand extends CommandBase {
+public class LoginCommand extends CommandBase implements ICommand {
 	
 	@Override
 	public String getCommandName()
@@ -22,6 +23,12 @@ public class LoginCommand extends CommandBase {
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 	return "/login <password>";
+	}
+	
+	@Override
+	public boolean checkPermission(MinecraftServer server, ICommandSender sender)
+	{
+		return true;
 	}
 
 	@Override
