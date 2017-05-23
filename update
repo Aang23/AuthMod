@@ -1,1 +1,3 @@
+git add .
+git commit -m "Fixed command permission issues"
 git push -f https://github.com/Fungie2134/AuthMod.git master

@@ -23,21 +23,28 @@ public class Commandlogout extends CommandBase {
 	{
 	return "/logout";
 	}
-
+	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
+	  {
+	    return true;
+	  }
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
-	if( Main.logged.contains(player.getName())){
-		Main.logged.remove(player.getName());
-		Main.posX.put(player.getName(), player.posX);
-		Main.posY.put(player.getName(), player.posY);
-		Main.posZ.put(player.getName(), player.posZ);
-		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Disconnected"));
-	}
-	else {
-		player.addChatMessage(new TextComponentString(TextFormatting.RED + "Already disconnected"));
-	}
+		    System.out.println("Has permission !");
+		    if( Main.logged.contains(player.getName())){
+				Main.logged.remove(player.getName());
+				Main.posX.put(player.getName(), player.posX);
+				Main.posY.put(player.getName(), player.posY);
+				Main.posZ.put(player.getName(), player.posZ);
+				player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Disconnected"));
+			}
+			else {
+				player.addChatMessage(new TextComponentString(TextFormatting.RED + "Already disconnected"));
+			}
+		}
+	
 } 
-}
+	
+
 
 

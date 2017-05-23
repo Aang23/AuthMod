@@ -30,10 +30,14 @@ public class Unregister extends CommandBase {
 	{
 	return "/unregister <password>";
 	}
-
+	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
+	  {
+	    return true;
+	  }
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
+		if(player.canCommandSenderUseCommand(0, "com.auth.mod.unregister")) {
 		if(Main.passwords.get(player.getName()).equals(args[0]) && Main.logged.contains(player.getName())){
 				Main.logged.remove(player.getName());
 				Main.passwords.remove(player.getName());
@@ -45,7 +49,7 @@ public class Unregister extends CommandBase {
 		Main.logged.remove(args[0]);
 	}
 } else player.addChatMessage(new TextComponentString(TextFormatting.RED + "Not logged in / Wrong password."));
-	
+		}
 		Map<String, String> ldapContent = Main.passwords;
 		Properties properties = new Properties();
 

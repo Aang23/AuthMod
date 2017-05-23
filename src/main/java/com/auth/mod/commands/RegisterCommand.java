@@ -29,7 +29,10 @@ public class RegisterCommand extends CommandBase {
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 	return "/register <password>";	}
-
+	 public boolean func_184882_a(MinecraftServer server, ICommandSender sender)
+	  {
+	    return true;
+	  }
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
