@@ -18,7 +18,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentString;
 
 
-public class Unregister extends CommandBase {
+public class Unregister extends CommandBase implements ICommand {
 	
 	@Override
 	public String getCommandName()
