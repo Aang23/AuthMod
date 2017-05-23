@@ -11,6 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
@@ -29,6 +30,12 @@ public class Unregister extends CommandBase {
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
 	return "/unregister <password>";
+	}
+	
+	@Override
+	public boolean checkPermission(MinecraftServer server, ICommandSender sender)
+	{
+		return true;
 	}
 
 	@Override
