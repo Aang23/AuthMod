@@ -61,16 +61,16 @@ public class Main {
         config.put("allowtp", "0");
         
         config.put("wrongpass", "Wrong password.");
-        config.put("loginmessage", "Please use /login to login.");
-        config.put("registermessage", "Please use /register to register.");
+        config.put("loginmessage", "Please use /login <password>");
+        config.put("registermessage", "Please use /register <password>");
         config.put("notloggedin", "Not logged in.");
-        config.put("disconnectedmessage", "Succefully disconnected");
+        config.put("disconnectedmessage", "Succefully disconnected !");
         config.put("loggedmessage", "Succefully logged in !");
         config.put("registeredmessage", "Succefully registered !");
         config.put("allreadyregistered", "Allready registered !");
         config.put("accountdeleted", "Account deleted !");
         config.put("accountnoexist", "Account does not exist !");
-        config.put("passwordchanged", "password changed !");
+        config.put("passwordchanged", "Password changed !");
 		}
 
 	@Mod.EventHandler
