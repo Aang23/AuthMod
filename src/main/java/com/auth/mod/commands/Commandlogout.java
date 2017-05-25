@@ -30,16 +30,15 @@ public class Commandlogout extends CommandBase {
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
 		EntityPlayer player = (EntityPlayer) sender;
-		    System.out.println("Has permission !");
 		    if( Main.logged.contains(player.getName())){
 				Main.logged.remove(player.getName());
 				Main.posX.put(player.getName(), player.posX);
 				Main.posY.put(player.getName(), player.posY);
 				Main.posZ.put(player.getName(), player.posZ);
-				player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Disconnected"));
+				player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("disconnectedmessage")));
 			}
 			else {
-				player.addChatMessage(new TextComponentString(TextFormatting.RED + "Already disconnected"));
+				player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("notloggedin")));
 			}
 		}
 	

@@ -34,13 +34,13 @@ public class LoginCommand extends CommandBase implements ICommand {
 if(Main.passwords.containsKey(player.getName())){
 	if( Main.passwords.get(player.getName()).equals(args[0])){
 		Main.logged.add(player.getName());
-		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Logged in !"));
+		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("loggedmessage")));
 	}
 	else {
-		player.addChatMessage(new TextComponentString(TextFormatting.RED + "Wrong password."));
+		player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("wrongpass")));
 	}
 } else {
-	player.addChatMessage(new TextComponentString(TextFormatting.RED + "Not registered, please use /register."));
+	player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("registermessage")));
 }
 	}
 }

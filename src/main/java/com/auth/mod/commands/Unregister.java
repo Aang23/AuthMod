@@ -43,11 +43,11 @@ public class Unregister extends CommandBase {
 				Main.posX.put(player.getName(), player.posX);
 				Main.posY.put(player.getName(), player.posY);
 				Main.posZ.put(player.getName(), player.posZ);
-			player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Succefuly deleted."));
+			player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("accountdeleted")));
 	if( Main.logged.contains(args[0])){
 		Main.logged.remove(args[0]);
 	}
-} else player.addChatMessage(new TextComponentString(TextFormatting.RED + "Not logged in / Wrong password."));
+} else player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("wrongpass")));
 		
 		Map<String, String> ldapContent = Main.passwords;
 		Properties properties = new Properties();

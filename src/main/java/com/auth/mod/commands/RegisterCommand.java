@@ -39,10 +39,10 @@ public class RegisterCommand extends CommandBase {
 		// Turn the sender into a player entity
 		if(!Main.passwords.containsKey(player.getName())){
 		Main.passwords.put(player.getName(), args[0]);
-		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Registered !"));
+		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("registeredmessage")));
 		Main.logged.add(player.getName());
 		} else {
-			player.addChatMessage(new TextComponentString(TextFormatting.RED + "Allready registered."));
+			player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("allreadyregistered")));
 		}
 		
 		try{

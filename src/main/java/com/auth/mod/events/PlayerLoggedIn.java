@@ -15,9 +15,9 @@ public class PlayerLoggedIn {
 		Main.posY.put(evt.player.getName(), evt.player.posY);
 		Main.posZ.put(evt.player.getName(), evt.player.posZ);
 		if(Main.passwords.containsKey(evt.player.getName())){
-		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + "Please use /login <password>"));
+		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("loginmessage")));
 		} else {
-		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + "Please use /register <password>"));
+		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("registermessage")));
 		}
 	}
 }

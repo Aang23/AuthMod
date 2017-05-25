@@ -42,10 +42,10 @@ public class changelogin extends CommandBase {
 		// Turn the sender into a player entity
 		if(Main.passwords.get(player.getName()).equals(args[0])){
 		Main.passwords.remove(player.getName());
-		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + "Password changed !"));
+		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("passwordchanged")));
 		Main.passwords.put(player.getName(), args[1]);
 		} else {
-			player.addChatMessage(new TextComponentString(TextFormatting.RED + "Wrong password."));
+			player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("wrongpass")));
 		}
 		
 		try{
