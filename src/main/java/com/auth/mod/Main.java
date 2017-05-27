@@ -17,9 +17,13 @@ import com.auth.mod.commands.See;
 import com.auth.mod.commands.Unregister;
 import com.auth.mod.commands.changelogin;
 import com.auth.mod.commands.rmlogin;
+import com.auth.mod.events.ChatEvent;
 import com.auth.mod.events.CommandEvents;
+import com.auth.mod.events.DropItem;
 import com.auth.mod.events.EntityEvents;
 import com.auth.mod.events.EntityEvents2;
+import com.auth.mod.events.PlayerHurt;
+import com.auth.mod.events.PlayerInteract;
 import com.auth.mod.events.PlayerLoggedIn;
 import com.auth.mod.events.PlayerLoggedOut;
 import com.auth.mod.events.PlayerMove;
@@ -59,6 +63,7 @@ public class Main {
         config.put("unregister", "1");
         config.put("changelogin", "1");
         config.put("allowtp", "0");
+        config.put("nochat", "1");
         
         config.put("wrongpass", "Wrong password.");
         config.put("loginmessage", "Please use /login <password>");
@@ -166,6 +171,10 @@ public class Main {
 	MinecraftForge.EVENT_BUS.register(new EntityEvents2());
 	MinecraftForge.EVENT_BUS.register(new CommandEvents());
 	MinecraftForge.EVENT_BUS.register(new PlayerMovement());
+	MinecraftForge.EVENT_BUS.register(new PlayerInteract());
+	MinecraftForge.EVENT_BUS.register(new PlayerHurt());
+	MinecraftForge.EVENT_BUS.register(new DropItem());
+	MinecraftForge.EVENT_BUS.register(new ChatEvent());
 	}
 	
 	
