@@ -26,7 +26,6 @@ import com.auth.mod.events.PlayerHurt;
 import com.auth.mod.events.PlayerInteract;
 import com.auth.mod.events.PlayerLoggedIn;
 import com.auth.mod.events.PlayerLoggedOut;
-import com.auth.mod.events.PlayerMove;
 import com.auth.mod.events.PlayerMovement;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -166,7 +165,6 @@ public class Main {
 	if(unregister==1) event.registerServerCommand(new Unregister());
 	MinecraftForge.EVENT_BUS.register(new PlayerLoggedIn());
 	MinecraftForge.EVENT_BUS.register(new PlayerLoggedOut());
-	MinecraftForge.EVENT_BUS.register(new PlayerMove());
 	MinecraftForge.EVENT_BUS.register(new EntityEvents());
 	MinecraftForge.EVENT_BUS.register(new EntityEvents2());
 	MinecraftForge.EVENT_BUS.register(new CommandEvents());

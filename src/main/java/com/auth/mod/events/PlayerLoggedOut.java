@@ -9,5 +9,8 @@ public class PlayerLoggedOut {
 	@SubscribeEvent
 	  public void PlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent evt) {
 		Main.logged.remove(evt.player.getName());
+		Main.posX.remove(evt.player.getName());
+		Main.posY.remove(evt.player.getName());
+		Main.posZ.remove(evt.player.getName());
 		}
 }
