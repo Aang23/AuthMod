@@ -68,10 +68,10 @@ public class Main {
         config.put("loginmessage", "Please use /login <password>");
         config.put("registermessage", "Please use /register <password>");
         config.put("notloggedin", "Not logged in.");
-        config.put("disconnectedmessage", "Succefully disconnected !");
-        config.put("loggedmessage", "Succefully logged in !");
-        config.put("registeredmessage", "Succefully registered !");
-        config.put("allreadyregistered", "Allready registered !");
+        config.put("disconnectedmessage", "Successfully disconnected !");
+        config.put("loggedmessage", "Successfully logged in !");
+        config.put("registeredmessage", "Successfully registered !");
+        config.put("allreadyregistered", "Already registered !");
         config.put("accountdeleted", "Account deleted !");
         config.put("accountnoexist", "Account does not exist !");
         config.put("passwordchanged", "Password changed !");
