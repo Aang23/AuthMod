@@ -37,6 +37,9 @@ public class rmlogin extends CommandBase {
 		EntityPlayer player = (EntityPlayer) sender;
 		if(Main.passwords.containsKey(args[0])){
 			Main.passwords.remove(args[0]);
+			
+			Main.time.put(args[0], 0);
+			
 			player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("accountdeleted")));
 	if( Main.logged.contains(args[0])){
 		Main.logged.remove(args[0]);

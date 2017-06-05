@@ -34,6 +34,7 @@ public class LoginCommand extends CommandBase implements ICommand {
 if(Main.passwords.containsKey(player.getName())){
 	if( Main.passwords.get(player.getName()).equals(args[0])){
 		Main.logged.add(player.getName());
+		Main.time.remove(player.getName());
 		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("loggedmessage")));
 	}
 	else {

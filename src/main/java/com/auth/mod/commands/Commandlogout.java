@@ -35,6 +35,7 @@ public class Commandlogout extends CommandBase {
 				Main.posX.put(player.getName(), player.posX);
 				Main.posY.put(player.getName(), player.posY);
 				Main.posZ.put(player.getName(), player.posZ);
+				Main.time.put(player.getName(),0);
 				player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("disconnectedmessage")));
 			}
 			else {

@@ -41,6 +41,7 @@ public class RegisterCommand extends CommandBase {
 		Main.passwords.put(player.getName(), args[0]);
 		player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("registeredmessage")));
 		Main.logged.add(player.getName());
+		Main.time.remove(player.getName());
 		} else {
 			player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("allreadyregistered")));
 		}

@@ -13,6 +13,7 @@ public class PlayerLoggedIn {
 		Main.posX.put(evt.player.getName(), evt.player.posX);
 		Main.posY.put(evt.player.getName(), evt.player.posY);
 		Main.posZ.put(evt.player.getName(), evt.player.posZ);
+		Main.time.put(evt.player.getName(), 0);
 		if(Main.passwords.containsKey(evt.player.getName())){
 		evt.player.addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("loginmessage")));
 		} else {

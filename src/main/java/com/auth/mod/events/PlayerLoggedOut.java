@@ -12,5 +12,6 @@ public class PlayerLoggedOut {
 		Main.posX.remove(evt.player.getName());
 		Main.posY.remove(evt.player.getName());
 		Main.posZ.remove(evt.player.getName());
+		Main.time.remove(evt.player.getName());
 		}
 }
