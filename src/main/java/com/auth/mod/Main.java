@@ -45,7 +45,7 @@ public class Main {
 
 	public static final String modId = "authmod";
 	public static final String name = "AuthMod";
-	public static final String version = "1.0.0";
+	public static final String version = "2.0";
 	public static List logged = new ArrayList();
 	public static Map time = new HashMap();
 	public static Map passwords = new HashMap();
@@ -53,6 +53,8 @@ public class Main {
 	public static Map posY = new HashMap();
 	public static Map posZ = new HashMap();
 	public static Map config = new HashMap();
+	public static Map ips = new HashMap();
+	public static Map ipnames = new HashMap();
 	@Mod.Instance(modId)
 	public static Main instance;
 
@@ -67,14 +69,16 @@ public class Main {
         config.put("allowtp", "0");
         config.put("nochat", "1");
         config.put("timeout", "60");
+        config.put("iplogin", "100");
         
         config.put("wrongpass", "Wrong password.");
         config.put("loginmessage", "Please use /login <password>");
+        config.put("iploginmessage", "Sucessfully logged by IP !");
         config.put("registermessage", "Please use /register <password>");
         config.put("notloggedin", "Not logged in.");
-        config.put("disconnectedmessage", "Sucefully disconnected !");
-        config.put("loggedmessage", "Sucefully logged in !");
-        config.put("registeredmessage", "Sucefully registered !");
+        config.put("disconnectedmessage", "Sucessfully disconnected !");
+        config.put("loggedmessage", "Sucessfully logged in !");
+        config.put("registeredmessage", "Sucessfully registered !");
         config.put("allreadyregistered", "Allready registered !");
         config.put("accountdeleted", "Account deleted !");
         config.put("accountnoexist", "Account does not exist !");
