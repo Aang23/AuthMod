@@ -27,10 +27,11 @@ public class PlayerLoggedIn {
 		int lenght = brut.length();
 		brut = brut.substring(0, lenght-6);
 		
-		if(Integer.parseInt((String) Main.config.get("iplogin")) > 0 && Main.ips.containsKey(brut) && Main.ipnames.get(evt.player.getName()) == brut){
+		if(Integer.parseInt((String) Main.config.get("iplogin")) > 0 && Main.ips.containsKey(brut)){
 			Main.logged.add(evt.player.getName());
 			evt.player.addChatMessage(new TextComponentString(TextFormatting.GREEN + (String)Main.config.get("iploginmessage")));	
 			Main.ips.remove(brut);
+			Main.time.remove(evt.player.getName());
 		}
 		
 		if(!Main.logged.contains(evt.player.getName())){

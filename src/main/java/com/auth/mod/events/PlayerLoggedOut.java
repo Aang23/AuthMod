@@ -20,8 +20,6 @@ public class PlayerLoggedOut {
 		
 		if(Integer.parseInt((String) Main.config.get("iplogin")) > 0 && !Main.ips.containsKey(brut) && Main.logged.contains(evt.player.getName())){
 			Main.ips.put(brut, 0);
-			if(Main.ipnames.containsKey(evt.player.getName())) Main.ipnames.remove(evt.player.getName());
-			Main.ipnames.put(evt.player.getName(), brut);
 			}
 		
 		

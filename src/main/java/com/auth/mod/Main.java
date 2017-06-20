@@ -54,7 +54,6 @@ public class Main {
 	public static Map posZ = new HashMap();
 	public static Map config = new HashMap();
 	public static Map ips = new HashMap();
-	public static Map ipnames = new HashMap();
 	@Mod.Instance(modId)
 	public static Main instance;
 
@@ -69,7 +68,7 @@ public class Main {
         config.put("allowtp", "0");
         config.put("nochat", "1");
         config.put("timeout", "60");
-        config.put("iplogin", "100");
+        config.put("iplogin", "0");
         
         config.put("wrongpass", "Wrong password.");
         config.put("loginmessage", "Please use /login <password>");
