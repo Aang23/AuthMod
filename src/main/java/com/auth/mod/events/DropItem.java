@@ -6,11 +6,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.server.FMLServerHandler;
 
 public class DropItem {
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void DropItems(ItemTossEvent evt) {
 			
 			if(!Main.logged.contains(evt.getPlayer().getName()) && Main.passwords.containsKey(evt.getPlayer().getName())){

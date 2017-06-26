@@ -3,15 +3,16 @@ package com.auth.mod.events;
 import com.auth.mod.Main;
 
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.server.FMLServerHandler;
 
 public class PlayerLoggedOut {
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void PlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent evt) {
 		
-		
+
 		MinecraftServer minecraftServer = FMLServerHandler.instance().getServer();
 		String brut = minecraftServer.getPlayerList().getPlayerByUsername(evt.player.getName()).connection.getNetworkManager().getRemoteAddress().toString().replaceAll("/", "");
 		int lenght = brut.length();

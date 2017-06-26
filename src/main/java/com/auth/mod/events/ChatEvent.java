@@ -7,10 +7,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChatEvent {
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void ChatEvent(ServerChatEvent evt) {
 		if(evt.getPlayer() instanceof EntityPlayer && !Main.logged.contains(evt.getPlayer().getName()) && Integer.parseInt((String) Main.config.get("nochat")) == 1){
 			evt.setCanceled(true);

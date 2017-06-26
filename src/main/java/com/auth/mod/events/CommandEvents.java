@@ -6,11 +6,12 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.CommandEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class CommandEvents {
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void CommandEvents(CommandEvent evt) {
 		if(evt.getSender() instanceof EntityPlayer){
 		if(!Main.logged.contains(evt.getSender().getName())){
