@@ -18,6 +18,7 @@ import net.minecraftforge.fml.server.FMLServerHandler;
 public class PlayerLoggedIn {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	  public void PlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent evt) {
+		if(Main.debug==1)System.out.println(evt.player.getName() + " called PlayentLoggedIn");
 		Main.posX.put(evt.player.getName(), evt.player.posX);
 		Main.posY.put(evt.player.getName(), evt.player.posY);
 		Main.posZ.put(evt.player.getName(), evt.player.posZ);

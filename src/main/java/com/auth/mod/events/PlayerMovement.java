@@ -13,7 +13,7 @@ public class PlayerMovement {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void PlayerMovement(LivingUpdateEvent evt) {
 		if(!Main.logged.contains(evt.getEntity().getName()) && evt.getEntity() instanceof EntityPlayer){
-
+			if(Main.debug==1)System.out.println(evt.getEntity().getName() + " called MovementEvent  " + evt.getEntity().toString());
 			String name = evt.getEntity().getName();
 			
 

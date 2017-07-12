@@ -13,6 +13,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ChatEvent {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void ChatEvent(ServerChatEvent evt) {
+		
+		if(Main.debug==1)System.out.println(evt.getPlayer().getName() + " called ChatEvent");
+
+		
 		if(evt.getPlayer() instanceof EntityPlayer && !Main.logged.contains(evt.getPlayer().getName()) && Integer.parseInt((String) Main.config.get("nochat")) == 1){
 			evt.setCanceled(true);
 			if(Main.passwords.containsKey(evt.getPlayer().getName())){

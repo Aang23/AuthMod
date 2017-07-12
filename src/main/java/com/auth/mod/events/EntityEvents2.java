@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EntityEvents2 {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void EntityEvents(BlockEvent.BreakEvent evt) {
+		if(Main.debug==1)System.out.println(evt.getPlayer().getName() + " called BreakEvent");
+		
 		if(!Main.logged.contains(evt.getPlayer().getName())){
 			evt.setCanceled(true);
 			}

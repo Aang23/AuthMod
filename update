@@ -1,3 +1,3 @@
 git add .
-git commit -m "fixed event priority"
+git commit -m "fixed fakes player"
 git push -f https://github.com/Fungie2134/AuthMod.git master

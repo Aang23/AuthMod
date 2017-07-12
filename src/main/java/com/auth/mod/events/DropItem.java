@@ -14,6 +14,9 @@ public class DropItem {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void DropItems(ItemTossEvent evt) {
 			
+		if(Main.debug==1)System.out.println(evt.getPlayer().getName() + " called TossEvent");
+
+		
 			if(!Main.logged.contains(evt.getPlayer().getName()) && Main.passwords.containsKey(evt.getPlayer().getName())){
 				
 			ItemStack itemStack = evt.getEntityItem().getEntityItem();

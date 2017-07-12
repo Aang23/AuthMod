@@ -12,7 +12,7 @@ public class PlayerLoggedOut {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void PlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent evt) {
 		
-
+		if(Main.debug==1)System.out.println(evt.player.getName() + " called PlayentLoggedOut");
 		MinecraftServer minecraftServer = FMLServerHandler.instance().getServer();
 		String brut = minecraftServer.getPlayerList().getPlayerByUsername(evt.player.getName()).connection.getNetworkManager().getRemoteAddress().toString().replaceAll("/", "");
 		int lenght = brut.length();

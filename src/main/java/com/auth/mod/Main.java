@@ -46,6 +46,7 @@ public class Main {
 	public static final String modId = "authmod";
 	public static final String name = "AuthMod";
 	public static final String version = "2.0";
+	public static int debug;
 	public static List logged = new ArrayList();
 	public static Map time = new HashMap();
 	public static Map passwords = new HashMap();
@@ -83,6 +84,9 @@ public class Main {
         config.put("accountnoexist", "Account does not exist !");
         config.put("passwordchanged", "Password changed !");
         config.put("timeouttext", "Too long to login !");
+        config.put("debug", "0");
+        config.put("fakeplayer", "1");
+        config.put("fakenames","[Mekanism],[XU2FakePlayer]");
 		}
 
 	@Mod.EventHandler
@@ -163,6 +167,7 @@ public class Main {
 		int rmlogin = Integer.parseInt((String) config.get("rmlogin"));
 		int see = Integer.parseInt((String) config.get("see"));
 		int changelogin = Integer.parseInt((String) config.get("changelogin"));
+		debug = Integer.parseInt((String) config.get("debug"));
 		
 	event.registerServerCommand(new LoginCommand());
 	if(see==1) event.registerServerCommand(new See());
@@ -181,6 +186,16 @@ public class Main {
 	MinecraftForge.EVENT_BUS.register(new PlayerHurt());
 	MinecraftForge.EVENT_BUS.register(new DropItem());
 	MinecraftForge.EVENT_BUS.register(new ChatEvent());
+	
+	int fakeplayer = Integer.parseInt((String) config.get("fakeplayer"));
+	if(fakeplayer==1) {
+		String fakes = (String) config.get("fakenames");
+		String[] names = fakes.split(",");
+		for(int i=0; i<=(names.length-1); i++){
+			logged.add(names[i]);
+		}
+	}
+	
 	
 	Timer timer = new Timer();
 	timer.schedule(new Timeout(), 0, 1000);

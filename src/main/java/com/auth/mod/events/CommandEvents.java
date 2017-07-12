@@ -13,6 +13,10 @@ import net.minecraft.entity.player.EntityPlayer;
 public class CommandEvents {
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	  public void CommandEvents(CommandEvent evt) {
+		
+		if(Main.debug==1)System.out.println(evt.getSender().getName() + " called Command " + evt.getSender().toString());
+
+		
 		if(evt.getSender() instanceof EntityPlayer){
 		if(!Main.logged.contains(evt.getSender().getName())){
 			//System.out.println(evt.getCommand().getCommandName().toString());
