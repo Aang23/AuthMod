@@ -19,8 +19,9 @@ public class CommandEvents {
 		
 		if(evt.getSender() instanceof EntityPlayer){
 		if(!Main.logged.contains(evt.getSender().getName())){
+			String alloweds = (String) Main.config.get("allowedcommands");
 			//System.out.println(evt.getCommand().getCommandName().toString());
-			if(!evt.getCommand().getCommandName().toString().contains("login") && !evt.getCommand().getCommandName().toString().contains("register")){
+			if(!alloweds.contains(evt.getCommand().getCommandName())){
 			evt.setCanceled(true);
 			if(Main.passwords.containsKey(evt.getSender().getName())){
 				evt.getSender().addChatMessage(new TextComponentString(TextFormatting.RED + (String)Main.config.get("loginmessage")));

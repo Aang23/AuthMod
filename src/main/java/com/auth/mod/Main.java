@@ -79,14 +79,15 @@ public class Main {
         config.put("disconnectedmessage", "Sucessfully disconnected !");
         config.put("loggedmessage", "Sucessfully logged in !");
         config.put("registeredmessage", "Sucessfully registered !");
-        config.put("allreadyregistered", "Allready registered !");
+        config.put("alreadyregistered", "Already registered !");
         config.put("accountdeleted", "Account deleted !");
         config.put("accountnoexist", "Account does not exist !");
         config.put("passwordchanged", "Password changed !");
         config.put("timeouttext", "Too long to login !");
         config.put("debug", "0");
         config.put("fakeplayer", "1");
-        config.put("fakenames","[Mekanism],[XU2FakePlayer]");
+        config.put("fakenames","[Mekanism],[XU2FakePlayer],[PR_FAKE],[Minecraft]");
+		config.put("allowedcommands","login,register");
 		}
 
 	@Mod.EventHandler
